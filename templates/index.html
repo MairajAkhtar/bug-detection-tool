@@ -64,14 +64,25 @@
         <input type="file" name="file" accept=".csv" class="input-glass mb-6" required />
         <button type="submit" class="btn-glass btn-hover">Analyze 🚀</button>
       </form>
-
-    </div>
-  </section>
-
+      
   <a href="/generate-sample-csv" class="text-blue-600 underline hover:text-blue-800 mt-4 inline-block">
     📄 Download Sample CSV
   </a>
   
+    </div>
+  </section>
+
+  <section id="upload-source" class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-2xl mx-auto glass p-8 text-center">
+      <h3 class="text-3xl font-bold mb-8">📂 Upload Your Source Code</h3>
+      <form id="uploadSourceForm" action="/analyze" method="post" enctype="multipart/form-data">
+        <input type="file" name="files" multiple class="input-glass mb-6" required />
+        <button type="submit" class="btn-glass btn-hover">Analyze Code 🚀</button>
+      </form>
+    </div>
+  </section>
+  
+
   <section id="gamification" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-6 max-w-3xl text-center">
       <h3 class="text-3xl font-semibold mb-6">Your Bug Hunter Stats</h3>
@@ -95,6 +106,12 @@
       Swal.fire({ title: 'Analyzing...', html: 'Please wait while we predict 🔎', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
       setTimeout(() => { this.submit(); }, 1500);
     });
+  document.getElementById('uploadSourceForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    Swal.fire({ title: 'Analyzing...', html: 'Extracting metrics and predicting...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    setTimeout(() => { this.submit(); }, 1500);
+  });
+
   </script>
 </body>
 </html>
